@@ -56,8 +56,11 @@ services:
       - PGID=1000
       - TZ=America/Mexico_City
     devices:
-      - "/dev/dri/card1:/dev/dri/card1"
-      - "/dev/dri/renderD128:/dev/dri/renderD128"
+      - /dev/dri/card1:/dev/dri/card1
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    ports:
+      - 8096:8096
+      -
     volumes:
       - /apps/docker/jelly:/config
       - /apps/docker/jelly:/cache
@@ -66,15 +69,6 @@ services:
         target: /media
         read_only: true
     restart: unless-stopped
-    
-  #portainer:
-    #image: portainer/portainer-ce:latest
-  #  ports:
-   #   - 9443:9443
-    #  volumes:
-     #   - /apps/docker/portainer:/data
-      #  - /var/run/docker.sock:/var/run/docker.sock
-    #restart: unless-stopped
     
   flaresolverr:
     # DockerHub mirror flaresolverr/flaresolverr:latest
@@ -87,5 +81,16 @@ services:
       - TZ=America/Mexico_City
     ports:
       - 8191:8191
+      - 8920:8920
+      - 1900:1900
+      - 7359:7359
     restart: unless-stopped 
-    
+
+  #portainer:
+    #image: portainer/portainer-ce:latest
+  #  ports:
+   #   - 9443:9443
+    #  volumes:
+     #   - /apps/docker/portainer:/data
+      #  - /var/run/docker.sock:/var/run/docker.sock
+    #restart: unless-stopped
