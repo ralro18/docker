@@ -55,7 +55,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Mexico_City
-    network_mode: 'host'
+    ddevices:
+      - "/dev/dri/card1:/dev/dri/card1"
+      - "/dev/dri/renderD128:/dev/dri/renderD128"
     volumes:
       - /apps/docker/jelly:/config
       - /apps/docker/jelly:/cache
