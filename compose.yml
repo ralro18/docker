@@ -16,17 +16,17 @@ services:
       - 8989:8989 # Sonarr
       - 9696:9696 # Prowlarr
     volumes:
-      - /media/docker/vpn:/gluetun
+      - /apps/docker/vpn:/gluetun
     environment:
       # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
       - VPN_SERVICE_PROVIDER=nordvpn
       - VPN_TYPE=wireguard
       # OpenVPN:
-      # - OPENVPN_USER=
-      # - OPENVPN_PASSWORD=
+      - OPENVPN_USER=
+      - OPENVPN_PASSWORD=
       # Wireguard:
-      - WIREGUARD_PRIVATE_KEY=<YOUR_PRIVATE_KEY> # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/nordvpn.md#obtain-your-wireguard-private-key
-      - WIREGUARD_ADDRESSES=10.5.0.2/32
+      #- WIREGUARD_PRIVATE_KEY=<YOUR_PRIVATE_KEY> # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/nordvpn.md#obtain-your-wireguard-private-key
+      #- WIREGUARD_ADDRESSES=10.5.0.2/32
       # Timezone for accurate log times
       - TZ=America/Mexico_City
       # Server list updater
@@ -43,8 +43,8 @@ services:
       - TZ=America/Mexico_City
       - WEBUI_PORT=8085
     volumes:
-      - /home/ubuntu/docker/arr-stack/qbittorrent:/config
-      - /home/ubuntu/docker/arr-stack/qbittorrent/downloads:/downloads
+      - /apps/docker/qbittorrent:/config
+      - /apps/docker/qbittorrent/downloads:/downloads
     depends_on:
       - gluetun
     restart: always
@@ -58,9 +58,9 @@ services:
       - PGID=1000
       - TZ=America/Mexico_City
     volumes:
-      - /home/ubuntu/docker/arr-stack/sonarr/data:/config
-      - /home/ubuntu/docker/arr-stack/sonarr/tvseries:/tv #optional
-      - /home/ubuntu/docker/arr-stack/sonarr/downloadclient-downloads:/downloads #optional
+      - /apps/docker/sonarr/data:/config
+      - /mnt/tv:/tv #optional
+      - /mnt:/downloads #optional
     restart: unless-stopped
 
   prowlarr:
@@ -72,7 +72,7 @@ services:
       - PGID=1000
       - TZ=America/Mexico_City
     volumes:
-      - /home/ubuntu/docker/arr-stack/prowlarr/data:/config
+      - /apps/docker/prowlarr/data:/config
     restart: unless-stopped
   
  nginxproxymanager:
@@ -84,5 +84,9 @@ services:
     - '81:81'
     - '443:443'
    volumes:
-    - ./nginx/data:/data
-    - ./nginx/letsencrypt:/etc/letsencrypt
+    - /apps/docker/nginx/data:/data
+    - /apps/docker/nginx/letsencrypt:/etc/letsencrypt
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
