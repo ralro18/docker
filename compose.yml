@@ -63,14 +63,14 @@ services:
     restart: unless-stopped
     # Optional - alternative address used for autodiscovery
     
-  portainer:
-    image: portainer/portainer-ce:latest
-    ports:
-      - 9443:9443
-      volumes:
-        - /apps/docker/portainer:/data
-        - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
+  #portainer:
+    #image: portainer/portainer-ce:latest
+  #  ports:
+   #   - 9443:9443
+    #  volumes:
+     #   - /apps/docker/portainer:/data
+      #  - /var/run/docker.sock:/var/run/docker.sock
+    #restart: unless-stopped
     
   flaresolverr:
     # DockerHub mirror flaresolverr/flaresolverr:latest
