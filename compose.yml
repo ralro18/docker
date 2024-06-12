@@ -9,8 +9,8 @@ services:
       - TZ=America/Mexico_City
     volumes:
       - /apps/docker/sonarr/data:/config
-      - /media/series:/tv #optional
-      - /mnt:/downloads #optional
+      - /media/series:/media #optional
+      - /mnt:/data #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -24,8 +24,8 @@ services:
       - TZ=America/Mexico_City
     volumes:
       - /apps/docker/radar:/config
-      - /media/pelis:/movies #optional
-      - /mnt:/downloads #optional
+      - /media/pelis:/media #optional
+      - /mnt:/data #optional
     ports:
       - 7878:7878
     restart: unless-stopped
