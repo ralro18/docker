@@ -131,3 +131,4 @@ services:
       - UMASK=000
       - PUID=0
       - PGID=0
+    restart: unless-stopped
