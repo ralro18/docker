@@ -137,9 +137,9 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "8081:80/tcp"
+      - 53:53/tcp
+      - 53:53/udp
+      - 8081:80/tcp
     environment:
       TZ: 'America/Mexico_City'
       WEBPASSWORD: 'admin'
@@ -147,3 +147,15 @@ services:
       - /apps/docker/pihole/pihole:/etc/pihole
       - /apps/docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
     restart: unless-stopped
+
+  nginxproxymanager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: ngx
+    restart: unless-stopped 
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443 
+    volumes:
+      - /apps/docker/ngx/data:/data
+      - /apps/docker/ngx/letsencrypt:/etc/letsencrypt 
