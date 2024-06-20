@@ -42,13 +42,13 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
-  
+
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      
+
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
@@ -72,7 +72,7 @@ services:
         target: /media
         read_only: true
     restart: unless-stopped
-    
+
   flaresolverr:
     # DockerHub mirror flaresolverr/flaresolverr:latest
     image: ghcr.io/flaresolverr/flaresolverr:latest
@@ -131,4 +131,19 @@ services:
       - UMASK=000
       - PUID=0
       - PGID=0
+    restart: unless-stopped
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+    environment:
+      TZ: 'America/Mexico_City'
+      WEBPASSWORD: 'admin'
+    volumes:
+      - /apps/docker/pihole/pihole:/etc/pihole
+      - /apps/docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
     restart: unless-stopped
