@@ -99,6 +99,8 @@ services:
   qBittorrent:
     image: binhex/arch-qbittorrentvpn:latest
     container_name: qbt
+    cap_add:
+      - NET_ADMIN
     ports:
       - 8080:8080
       - 8118:8118
