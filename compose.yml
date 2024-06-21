@@ -50,7 +50,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   jellyfin:
-    image: jellyfin/jellyfin
+    image: jellyfin/jellyfin:latest
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -97,7 +97,7 @@ services:
     restart: unless-stopped
 
   qBittorrent:
-    image: binhex/arch-qbittorrentvpn
+    image: binhex/arch-qbittorrentvpn:latest
     container_name: qbt
     ports:
       - 8080:8080
