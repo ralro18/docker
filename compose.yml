@@ -60,7 +60,7 @@ services:
       - /dev/dri/card1:/dev/dri/card1
       - /dev/dri/renderD128:/dev/dri/renderD128
     ports:
-      - 8096:8096   
+      - 8096:8096
       - 8920:8920
       - 1900:1900
       - 7359:7359
@@ -84,7 +84,7 @@ services:
       - TZ=America/Mexico_City
     ports:
       - 8191:8191
-    restart: unless-stopped 
+    restart: unless-stopped
 
   portainer:
     image: portainer/portainer-ce:latest
@@ -151,11 +151,11 @@ services:
   nginxproxymanager:
     image: jc21/nginx-proxy-manager:latest
     container_name: ngx
-    restart: unless-stopped 
+    restart: unless-stopped
     ports:
       - 80:80
       - 81:81
-      - 443:443 
+      - 443:443
     volumes:
       - /apps/docker/ngx/data:/data
-      - /apps/docker/ngx/letsencrypt:/etc/letsencrypt 
+      - /apps/docker/ngx/letsencrypt:/etc/letsencrypt
