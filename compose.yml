@@ -43,11 +43,16 @@ services:
       - 9696:9696
     restart: unless-stopped
 
-  watchtower:
+watchtower:
     image: containrrr/watchtower:latest
     container_name: watchtower
+    environment:
+      - TZ=America/Mexico_City
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE=0 0 3 * * *
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
 
   jellyfin:
     image: jellyfin/jellyfin:latest
