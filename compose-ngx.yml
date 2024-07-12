@@ -1,0 +1,34 @@
+name: ngx
+services:
+ nginxproxymanager:
+  image: jc21/nginx-proxy-manager:latest
+  container_name: nginxproxymanager
+  restart: unless-stopped
+  ports:
+   - 80:80
+   - 81:81
+   - 443:443
+  volumes:
+   - ./nginx/data:/data
+   - ./nginx/letsencrypt:/etc/letsencrypt
+
+ watchtower:
+  image: containrrr/watchtower:latest
+  container_name: watchtower
+  environment:
+   - TZ=America/Mexico_City
+   - WATCHTOWER_CLEANUP=true
+   - WATCHTOWER_SCHEDULE=0 0 3 * * *
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+  restart: unless-stopped
+
+ portainer-agent:
+  image: portainer/agent:latest
+  container_name: portainer-agent
+  ports:
+   - 9001:9001
+  volumes:
+   - /var/lib/docker/volumes:/var/lib/docker/volumes
+   - /var/run/docker.sock:/var/run/docker.sock
+  restart: unless-stopped
