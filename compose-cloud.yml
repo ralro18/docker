@@ -4,7 +4,7 @@ services:
   image: cloudflare/cloudflared
   container_name: cloudflared-tunnel
   restart: unless-stopped
-  command: tunnel run
+  command: tunnel --no-autoupdate run
   network_mode: host
   volumes:
    - /etc/localtime:/etc/localtime:ro
