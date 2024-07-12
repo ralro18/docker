@@ -1,0 +1,33 @@
+name: ngx
+services:
+ cloudflare:
+  image: cloudflare/cloudflared
+  container_name: cloudflared-tunnel
+  restart: unless-stopped
+  command: tunnel run
+  network_mode: host
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+  environment:
+   - TUNNEL_TOKEN=****
+
+ watchtower:
+  image: containrrr/watchtower:latest
+  container_name: watchtower
+  environment:
+   - TZ=America/Mexico_City
+   - WATCHTOWER_CLEANUP=true
+   - WATCHTOWER_SCHEDULE=0 0 3 * * *
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+  restart: unless-stopped
+
+ portainer-agent:
+  image: portainer/agent:latest
+  container_name: portainer-agent
+  ports:
+   - 9001:9001
+  volumes:
+   - /var/lib/docker/volumes:/var/lib/docker/volumes
+   - /var/run/docker.sock:/var/run/docker.sock
+  restart: unless-stopped
