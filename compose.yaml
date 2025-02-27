@@ -1,0 +1,201 @@
+name: genera
+ services:
+   Ubuntu:
+     image: ubuntu:latest
+     container_name: alm1
+     ports:
+       - 5001:22
+       - 5026:80
+     restart: unless-stopped
+
+   Ubuntu2:
+     image: ubuntu:latest
+     container_name: alm2
+     ports:
+       - 5002:22
+       - 5027:80
+     restart: unless-stopped
+
+   Ubuntu3:
+     image: ubuntu:latest
+     container_name: alm3
+     ports:
+       - 5003:22
+       - 5028:80
+     restart: unless-stopped
+
+   Ubuntu4:
+     image: ubuntu:latest
+     container_name: alm4
+     ports:
+       - 5004:22
+       - 5029:80
+     restart: unless-stopped
+
+   Ubuntu5:
+     image: ubuntu:latest
+     container_name: alm5
+     ports:
+       - 5005:22
+       - 5030:80
+     restart: unless-stopped
+
+    Ubuntu6:
+     image: ubuntu:latest
+     container_name: alm6
+     ports:
+       - 5006:22
+       - 5031:80
+     restart: unless-stopped
+
+   Ubuntu7:
+     image: ubuntu:latest
+     container_name: alm7
+     ports:
+       - 5007:22
+       - 5032:80
+     restart: unless-stopped
+
+   Ubuntu8:
+     image: ubuntu:latest
+     container_name: alm8
+     ports:
+       - 5008:22
+       - 5033:80
+     restart: unless-stopped
+
+   Ubuntu9:
+     image: ubuntu:latest
+     container_name: alm9
+     ports:
+       - 5009:22
+       - 5034:80
+     restart: unless-stopped
+
+   Ubuntu10:
+     image: ubuntu:latest
+     container_name: alm10
+     ports:
+       - 5010:22
+       - 5035:80
+     restart: unless-stopped
+
+   Ubuntu11:
+     image: ubuntu:latest
+     container_name: alm11
+     ports:
+       - 5011:22
+       - 5036:80
+     restart: unless-stopped
+
+   Ubuntu12:
+     image: ubuntu:latest
+     container_name: alm12
+     ports:
+       - 5012:22
+       - 5037:80
+     restart: unless-stopped
+
+   Ubuntu13:
+     image: ubuntu:latest
+     container_name: alm13
+     ports:
+       - 5013:22
+       - 5038:80
+     restart: unless-stopped
+
+   Ubuntu14:
+     image: ubuntu:latest
+     container_name: alm14
+     ports:
+       - 5014:22
+       - 5039:80
+     restart: unless-stopped
+
+   Ubuntu15:
+     image: ubuntu:latest
+     container_name: alm15
+     ports:
+       - 5015:22
+       - 5040:80
+     restart: unless-stopped
+
+   Ubuntu16:
+     image: ubuntu:latest
+     container_name: alm16
+     ports:
+       - 5016:22
+       - 5041:80
+     restart: unless-stopped
+
+   Ubuntu17:
+     image: ubuntu:latest
+     container_name: alm17
+     ports:
+       - 5017:22
+       - 50342:80
+     restart: unless-stopped
+
+   Ubuntu18:
+     image: ubuntu:latest
+     container_name: alm18
+     ports:
+       - 5018:22
+       - 5043:80
+     restart: unless-stopped
+
+   Ubuntu19:
+     image: ubuntu:latest
+     container_name: alm19
+     ports:
+       - 5019:22
+       - 5044:80
+     restart: unless-stopped
+
+   Ubuntu20:
+     image: ubuntu:latest
+     container_name: alm20
+     ports:
+       - 5020:22
+       - 5045:80
+     restart: unless-stopped
+
+   Ubuntu21:
+     image: ubuntu:latest
+     container_name: alm21
+     ports:
+       - 5021:22
+       - 5046:80
+     restart: unless-stopped
+
+   Ubuntu22:
+     image: ubuntu:latest
+     container_name: alm22
+     ports:
+       - 5022:22
+       - 5047:80
+     restart: unless-stopped
+
+   Ubuntu23:
+     image: ubuntu:latest
+     container_name: alm23
+     ports:
+       - 5023:22
+       - 5048:80
+     restart: unless-stopped
+
+   Ubuntu24:
+     image: ubuntu:latest
+     container_name: alm24
+     ports:
+       - 5024:22
+       - 5049:80
+     restart: unless-stopped
+
+   Ubuntu25:
+     image: ubuntu:latest
+     container_name: alm25
+     ports:
+       - 5025:22
+       - 5050:80
+     restart: unless-stopped 
